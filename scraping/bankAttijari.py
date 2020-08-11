@@ -12,25 +12,30 @@ def bankAttijari():
 
     rows = psoup.findAll("tr")
 
+
+    prices = {}
+
+
+    curs = {
+        'USD': 'USD',
+        'EURO': 'EURO',
+        'CANADIEN': 'CAD',
+        'STERLING': 'GBP'
+    }
+
+
     for row in rows[1:]:
 
         tds = row.findAll("td")
 
-        if "USD" in tds[2].span.text:
-            buyUSD = tds[3].span.text.rstrip("\n").replace(".", ",")
+        for key in curs:
+            if key in tds[2].span.text:
+                prices[curs[key]] = {
+                    'buy': tds[3].span.text.rstrip("\n").replace(".", ","),
+                    'sell': tds[4].span.text.rstrip("\n").replace(".", ",")
+                    }
 
-        if "EURO" in tds[2].span.text:
-            buyEURO = tds[3].span.text.rstrip("\n").replace(".", ",")
-
-        if "CANADIEN" in tds[2].span.text:
-            buyCAD = tds[3].span.text.rstrip("\n").replace(".", ",")
-        
-
-    return {
-        "EURO": buyEURO,
-        "USD": buyUSD,
-        "CAD": buyCAD
-    }
+    return prices
 
 
 print(bankAttijari())

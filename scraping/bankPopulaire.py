@@ -12,15 +12,31 @@ def bankPopulaire():
 
     rows = psoup.findAll("tr")
 
-    rs = rows[2:5]
 
-    prices = [r.findAll("td")[1].text for r in rs]
+    prices = {}
 
-    return {
-        "EURO": prices[0],
-        "USD": prices[1],
-        "CAD": prices[2]
+
+    curs = {
+        'USD': 'USD',
+        'EUR': 'EURO',
+        'CAD': 'CAD',
+        'GBP': 'GBP'
     }
 
 
-# print(bankPopulaire())
+    for row in rows[2:10]:
+
+        tds = row.findAll("td")
+
+        for key in curs:
+            if key in tds[0].text:
+                prices[curs[key]] = {
+                    'buy': tds[1].text,
+                    'sell': tds[5].text
+                    }
+
+
+    return prices
+
+
+print(bankPopulaire())

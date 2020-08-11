@@ -12,15 +12,32 @@ def alMaghrib():
 
     rows = psoup.findAll("tr")
 
-    rs = rows[2:5]
+    prices = {}
 
-    prices = [r.span.text for r in rs]
 
-    return {
-        "EURO": prices[0],
-        "USD": prices[1],
-        "CAD": prices[2]
+    curs = {
+        'U.S.A': 'USD',
+        'EURO': 'EURO',
+        'CANADIEN': 'CAD',
+        'LIVRE STERLING': 'GBP'
     }
+
+
+    for row in rows[2:10]:
+
+        tds = row.findAll("td")
+
+        for key in curs:
+            if key in tds[0].text:
+                prices[curs[key]] = {
+                    'buy': tds[1].text,
+                    'sell': tds[1].text
+                    }
+
+
+    return prices
+
+# print(alMaghrib())
 
 
 

@@ -7,35 +7,65 @@ from scraping.bankAttijari import bankAttijari
 
 
 def bToC():
-    alMaghribData = alMaghrib()
-    bankPopulaireData = bankPopulaire()
-    bankAttijariData = bankAttijari()
 
-    USD = {
-        # "name": "USD",
-        "Bank Al Maghrib": alMaghribData["USD"],
-        "Banque Populaire": bankPopulaireData["USD"],
-        "Attijariwafa bank": bankAttijariData["USD"]
+    banks = {
+        "Bank Al Maghrib (moyen)": alMaghrib(),
+        "Banque Populaire": bankPopulaire(),
+        "Attijariwafa bank": bankAttijari()
     }
 
-    EURO = {
-        # "name": "EURO",
-        "Bank Al Maghrib": alMaghribData["EURO"],
-        "Banque Populaire": bankPopulaireData["EURO"],
-        "Attijariwafa bank": bankAttijariData["EURO"]
-    }
+    curs = [
+        'USD',
+        'EURO',
+        'CAD',
+        'GBP'
+    ]
 
-    CAD = {
-        # "name": "CAD",
-        "Bank Al Maghrib": alMaghribData["CAD"],
-        "Banque Populaire": bankPopulaireData["CAD"],
-        "Attijariwafa bank": bankAttijariData["CAD"]
-    }
+    prices = {}
 
-    return {
-        'USD': USD,
-        'EURO': EURO,
-        'CAD': CAD,
-    }
+    # prices = {
+    #     'cur1': {
+    #         'sell': {
+    #             'bank1': '00',
+    #             'bank2': '00'
+    #         },
+    #         'buy': {
+    #             'bank1': '00',
+    #             'bank2': '00'
+    #         }
+    #     },
+    #     'cur1': {
+    #         'sell': {
+    #             'bank1': '00',
+    #             'bank2': '00'
+    #         },
+    #         'buy': {
+    #             'bank1': '00',
+    #             'bank2': '00'
+    #         }
+    #     },
+    # }
+
+    for cur in curs:
+
+        prices[cur] = {
+            'sell': {},
+            'buy': {}
+        }
+
+
+        for key in banks:
+            prices[cur] = {
+            'sell': {**prices[cur]['sell'], **{key: banks[key][cur]['sell']}},
+            'buy': {**prices[cur]['buy'], **{key: banks[key][cur]['buy']}}
+        }
+
+
+
+
+
+    return prices
+
+print(bToC())
 
 

@@ -1,6 +1,7 @@
 import csv
 import firebase_admin
 import google.cloud
+import datetime
 from firebase_admin import credentials, firestore
 
 from scraping.bToC import bToC
@@ -14,5 +15,17 @@ store = firestore.client()
 collection_name = "testCol"
 
 
-store.collection(collection_name).document('testDoc').set(bToC())
+data = bToC()
+
+print(data)
+
+time = datetime.datetime.now().strftime('%x')
+
+doc = {
+    'date': time,
+    'data': data
+}
+
+
+store.collection(collection_name).document('testDoc1').set(doc)
 
