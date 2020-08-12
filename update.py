@@ -5,6 +5,7 @@ import datetime
 from firebase_admin import credentials, firestore
 
 from bToC import bToC
+from names import names
 
 
 cred = credentials.Certificate("dh-exchange-firebase-adminsdk-p8n1o-53dbdf224f.json")
@@ -23,7 +24,8 @@ time = datetime.datetime.now().strftime('%x')
 
 doc = {
     'date': time,
-    'data': data
+    'data': data,
+    'names': names,
 }
 
 

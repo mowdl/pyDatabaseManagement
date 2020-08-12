@@ -1,8 +1,7 @@
 from scraping.bankAlMaghrib import alMaghrib
 from scraping.bankPopulaire import bankPopulaire
 from scraping.bankAttijari import bankAttijari
-
-
+from names import names
 # from banks dicts to currencies dicts
 
 
@@ -14,14 +13,7 @@ def bToC():
         "Attijariwafa bank": bankAttijari()
     }
 
-    curs = [
-        'USD',
-        'EURO',
-        'CAD',
-        'GBP',
-        'SAR',
-        'CHF',
-    ]
+    curs = names.keys()
 
     prices = {}
 

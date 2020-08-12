@@ -18,7 +18,7 @@ def bankPopulaire():
 
     curs = {
         'USD': 'USD',
-        'EUR': 'EURO',
+        'EUR': 'EUR',
         'CAD': 'CAD',
         'GBP': 'GBP',
         'SAR': 'SAR',

@@ -18,7 +18,7 @@ def bankAttijari():
 
     curs = {
         'USD': 'USD',
-        'EURO': 'EURO',
+        'EUR': 'EUR',
         'CANADIEN': 'CAD',
         'STERLING': 'GBP',
         'SAOUDIEN': 'SAR',
