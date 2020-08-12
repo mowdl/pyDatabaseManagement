@@ -20,7 +20,9 @@ def bankAttijari():
         'USD': 'USD',
         'EURO': 'EURO',
         'CANADIEN': 'CAD',
-        'STERLING': 'GBP'
+        'STERLING': 'GBP',
+        'SAOUDIEN': 'SAR',
+        'SUISSE': 'CHF'
     }
 
 

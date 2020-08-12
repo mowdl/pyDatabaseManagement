@@ -4,7 +4,7 @@ import google.cloud
 import datetime
 from firebase_admin import credentials, firestore
 
-from scraping.bToC import bToC
+from bToC import bToC
 
 
 cred = credentials.Certificate("dh-exchange-firebase-adminsdk-p8n1o-53dbdf224f.json")

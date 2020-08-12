@@ -19,11 +19,13 @@ def alMaghrib():
         'U.S.A': 'USD',
         'EURO': 'EURO',
         'CANADIEN': 'CAD',
-        'LIVRE STERLING': 'GBP'
+        'LIVRE STERLING': 'GBP',
+        'SAOUDIEN': 'SAR',
+        'SUISSE': 'CHF'
     }
 
 
-    for row in rows[2:10]:
+    for row in rows[2:14]:
 
         tds = row.findAll("td")
 

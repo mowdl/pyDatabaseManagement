@@ -20,11 +20,13 @@ def bankPopulaire():
         'USD': 'USD',
         'EUR': 'EURO',
         'CAD': 'CAD',
-        'GBP': 'GBP'
+        'GBP': 'GBP',
+        'SAR': 'SAR',
+        'CHF': 'CHF'
     }
 
 
-    for row in rows[2:10]:
+    for row in rows[2:12]:
 
         tds = row.findAll("td")
 

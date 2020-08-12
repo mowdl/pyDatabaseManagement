@@ -18,7 +18,9 @@ def bToC():
         'USD',
         'EURO',
         'CAD',
-        'GBP'
+        'GBP',
+        'SAR',
+        'CHF',
     ]
 
     prices = {}
