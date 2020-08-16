@@ -38,7 +38,9 @@ def bankPopulaire():
                     }
 
 
-    return prices
+    return {
+        'billet': prices,
+    }
 
 
-print(bankPopulaire())
+# print(bankPopulaire())

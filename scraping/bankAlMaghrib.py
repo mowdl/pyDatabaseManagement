@@ -37,7 +37,10 @@ def alMaghrib():
                     }
 
 
-    return prices
+    return {
+        'billet': prices,
+        'virement': prices,
+    }
 
 # print(alMaghrib())
 

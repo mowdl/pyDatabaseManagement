@@ -4,16 +4,23 @@ from bs4 import BeautifulSoup as soup
 
 
 def bankAttijari():
-    myUrl = 'https://attijarinet.attijariwafa.com/particulier/public/coursdevise'
+    myUrl1 = 'https://attijarinet.attijariwafa.com/particulier/public/coursdevise'
 
-    page_html = uReq(myUrl).read()
+    page_html1 = uReq(myUrl1).read()
 
-    psoup = soup(page_html, "html.parser")
+    psoup1 = soup(page_html1, "html.parser")
 
-    rows = psoup.findAll("tr")
+    pDate = psoup1.findAll('div',{'class':'block-header'})[1].b.text.replace('-','/')
 
+    myUrl2 = myUrl1 + '/search?dateCours='+ pDate +'&typeOperation=Virement'
 
-    prices = {}
+    page_html2 = uReq(myUrl2).read()
+
+    psoup2 = soup(page_html2, "html.parser")
+
+    prices1 = {}
+    prices2 = {}
+
 
 
     curs = {
@@ -26,18 +33,25 @@ def bankAttijari():
     }
 
 
-    for row in rows[1:]:
+    for [prices, psoup] in [[prices1, psoup1], [prices2, psoup2]]:
 
-        tds = row.findAll("td")
+        rows = psoup.findAll("tr")
 
-        for key in curs:
-            if key in tds[2].span.text:
-                prices[curs[key]] = {
-                    'buy': tds[3].span.text.rstrip("\n").replace(".", ","),
-                    'sell': tds[4].span.text.rstrip("\n").replace(".", ",")
-                    }
+        for row in rows[1:]:
 
-    return prices
+            tds = row.findAll("td")
+
+            for key in curs:
+                if key in tds[2].span.text:
+                    prices[curs[key]] = {
+                        'buy': tds[3].span.text.rstrip("\n").replace(".", ","),
+                        'sell': tds[4].span.text.rstrip("\n").replace(".", ",")
+                        }
+
+    return {
+        'billet': prices1,
+        'virement': prices2,
+    }
 
 
-print(bankAttijari())
+# print(bankAttijari())

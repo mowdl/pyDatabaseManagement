@@ -15,7 +15,8 @@ def bToC():
 
     curs = names.keys()
 
-    prices = {}
+    prices1 = {}
+    prices2 = {}
 
     # prices = {
     #     'cur1': {
@@ -40,26 +41,27 @@ def bToC():
     #     },
     # }
 
-    for cur in curs:
+    for [prices, priceType] in [[prices1, 'billet'], [prices2, 'virement']]:
 
-        prices[cur] = {
-            'sell': {},
-            'buy': {}
-        }
+        for cur in curs:
 
-
-        for key in banks:
             prices[cur] = {
-            'sell': {**prices[cur]['sell'], **{key: banks[key][cur]['sell']}},
-            'buy': {**prices[cur]['buy'], **{key: banks[key][cur]['buy']}}
-        }
+                'sell': {},
+                'buy': {}
+            }
 
+            for key in banks:
 
+                if priceType in banks[key]:
+                    prices[cur] = {
+                        'sell': {**prices[cur]['sell'], **{key: banks[key][priceType][cur]['sell']}},
+                        'buy': {**prices[cur]['buy'], **{key: banks[key][priceType][cur]['buy']}}
+                    }
 
+    return {
+        'billet': prices1,
+        'virement': prices2
+    }
 
-
-    return prices
 
 print(bToC())
-
-
