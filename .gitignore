@@ -1,6 +1,5 @@
-scraping/__pycache__/bankPopulaire.cpython-36.pyc
-scraping/__pycache__/bankAttijari.cpython-36.pyc
-scraping/__pycache__/bankAlMaghrib.cpython-36.pyc
-__pycache__/bToC.cpython-36.pyc
-scraping/__pycache__/bankPopulaire.cpython-38.pyc
-__pycache__/names.cpython-38.pyc
+.vscode
+.gitignore
+scraping/__pycache__
+venv
+
