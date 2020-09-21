@@ -1,21 +1,31 @@
-import bs4
-from urllib.request import urlopen as uReq
+from requests import get
 from bs4 import BeautifulSoup as soup
 
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 def bankPopulaire():
+
+    # yesterday as dd/mm/yyyy
+    yesterday = datetime.now() + relativedelta(days=-5)
+    StringDate = yesterday.strftime('%d') + '/' + yesterday.strftime('%m') + '/' + yesterday.strftime('%Y')
+
     myUrl = 'https://bpnet.gbp.ma/Public/FinaServices/ExchangeRate'
 
-    page_html = uReq(myUrl).read()
+    # params for the virement html requst
+    params = {
+        'Param.Type': 'vir',
+        'Param.StringDate': StringDate,
+        'Param.Label': ''
+    }
 
-    psoup = soup(page_html, "html.parser")
+    page_html1 = get(myUrl).text
+    page_html2 = get(myUrl, params= params).text
 
-    rows = psoup.findAll("tr")
+    prices1 = {}
+    prices2 = {}
 
-
-    prices = {}
-
-
+    # curs to search for, {'name in site': 'name in app'}
     curs = {
         'USD': 'USD',
         'EUR': 'EUR',
@@ -25,22 +35,25 @@ def bankPopulaire():
         'CHF': 'CHF'
     }
 
+    for page_html, prices in [[page_html1, prices1], [page_html2, prices2]]:
+        psoup = soup(page_html, "html.parser")
 
-    for row in rows[2:12]:
+        rows = psoup.findAll("tr")
 
-        tds = row.findAll("td")
+        for row in rows[2:12]:
 
-        for key in curs:
-            if key in tds[0].text:
-                prices[curs[key]] = {
-                    'buy': tds[1].text,
-                    'sell': tds[5].text
-                    }
+            tds = row.findAll("td")
 
+            for key in curs:
+                if key in tds[0].text:
+                    prices[curs[key]] = {
+                        'buy': tds[1].text,
+                        'sell': tds[5].text
+                        }
 
+    print('****** Banque Populaire done')
     return {
-        'billet': prices,
+        'billet': prices1,
+        'virement': prices2,
     }
 
-
-# print(bankPopulaire())

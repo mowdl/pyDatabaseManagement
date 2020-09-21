@@ -2,4 +2,5 @@
 .gitignore
 scraping/__pycache__
 venv
-
+.update.py.swp
+__pycache__

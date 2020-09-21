@@ -36,13 +36,13 @@ def alMaghrib():
                     'sell': tds[1].text
                     }
 
+    print('****** Bank Al Maghrib Done')
 
     return {
         'billet': prices,
         'virement': prices,
     }
 
-# print(alMaghrib())
 
 
 

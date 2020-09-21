@@ -15,10 +15,10 @@ store = firestore.client()
 
 collection_name = "testCol"
 
+print('****** Preparing Data')
 
 data = bToC()
 
-print(data)
 
 time = datetime.datetime.now().strftime('%x')
 
@@ -31,3 +31,4 @@ doc = {
 
 store.collection(collection_name).document('testDoc1').set(doc)
 
+print('****** Data is Sent')

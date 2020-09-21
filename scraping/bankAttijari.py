@@ -47,7 +47,7 @@ def bankAttijari():
                         'buy': tds[3].span.text.rstrip("\n").replace(".", ","),
                         'sell': tds[4].span.text.rstrip("\n").replace(".", ",")
                         }
-
+    print('****** Attijariwafa done')	
     return {
         'billet': prices1,
         'virement': prices2,
