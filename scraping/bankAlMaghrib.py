@@ -32,8 +32,8 @@ def alMaghrib():
         for key in curs:
             if key in tds[0].text:
                 prices[curs[key]] = {
-                    'buy': tds[1].text,
-                    'sell': tds[1].text
+                    'buy': tds[1].text.replace(",", "."),
+                    'sell': tds[1].text.replace(",", ".")
                     }
 
     print('****** Bank Al Maghrib Done')

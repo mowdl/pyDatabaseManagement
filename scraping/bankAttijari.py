@@ -44,8 +44,8 @@ def bankAttijari():
             for key in curs:
                 if key in tds[2].span.text:
                     prices[curs[key]] = {
-                        'buy': tds[3].span.text.rstrip("\n").replace(".", ","),
-                        'sell': tds[4].span.text.rstrip("\n").replace(".", ",")
+                        'buy': tds[3].span.text.rstrip("\n"),
+                        'sell': tds[4].span.text.rstrip("\n"),
                         }
     print('****** Attijariwafa done')	
     return {

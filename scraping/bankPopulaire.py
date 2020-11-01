@@ -47,8 +47,8 @@ def bankPopulaire():
             for key in curs:
                 if key in tds[0].text:
                     prices[curs[key]] = {
-                        'buy': tds[1].text,
-                        'sell': tds[5].text
+                        'buy': tds[1].text.replace(",", "."),
+                        'sell': tds[5].text.replace(",", ".")
                         }
 
     print('****** Banque Populaire done')
