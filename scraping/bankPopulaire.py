@@ -7,7 +7,7 @@ from dateutil.relativedelta import relativedelta
 def bankPopulaire():
 
     # yesterday as dd/mm/yyyy
-    yesterday = datetime.now() + relativedelta(days=-5)
+    yesterday = datetime.now() + relativedelta(days=-14)
     StringDate = yesterday.strftime('%d') + '/' + yesterday.strftime('%m') + '/' + yesterday.strftime('%Y')
 
     myUrl = 'https://bpnet.gbp.ma/Public/FinaServices/ExchangeRate'
@@ -27,10 +27,10 @@ def bankPopulaire():
 
     # curs to search for, {'name in site': 'name in app'}
     curs = {
-        'USD': 'USD',
-        'EUR': 'EUR',
+        'USD': '$',
+        'EUR': '€',
         'CAD': 'CAD',
-        'GBP': 'GBP',
+        'GBP': '₤',
         'SAR': 'SAR',
         'CHF': 'CHF'
     }

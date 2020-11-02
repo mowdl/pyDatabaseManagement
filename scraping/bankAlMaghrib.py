@@ -16,10 +16,10 @@ def alMaghrib():
 
 
     curs = {
-        'U.S.A': 'USD',
-        'EUR': 'EUR',
+        'U.S.A': '$',
+        'EUR': '€',
         'CANADIEN': 'CAD',
-        'LIVRE STERLING': 'GBP',
+        'LIVRE STERLING': '₤',
         'SAOUDIEN': 'SAR',
         'SUISSE': 'CHF'
     }

@@ -24,10 +24,10 @@ def bankAttijari():
 
 
     curs = {
-        'USD': 'USD',
-        'EUR': 'EUR',
+        'USD': '$',
+        'EUR': '€',
         'CANADIEN': 'CAD',
-        'STERLING': 'GBP',
+        'STERLING': '₤',
         'SAOUDIEN': 'SAR',
         'SUISSE': 'CHF'
     }

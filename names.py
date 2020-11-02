@@ -4,10 +4,10 @@
 
 
 curs = {
-        'DOLLAR USA': 'USD',
-        'EURO': 'EUR',
+        'DOLLAR USA': '$',
+        'EURO': '€',
         'DOLLAR CANADIEN': 'CAD',
-        'LIVRE STERLING': 'GBP',
+        'LIVRE STERLING': '₤',
         'RIYAL SAOUDIEN': 'SAR',
         'FRANC SUISSE': 'CHF'
     }
